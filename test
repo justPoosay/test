@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Licznik odwiedzających</title>
+</head>
+<body>
+    <h1>Witaj na naszej stronie!</h1>
+    <p>Obecnie jest nas: <span id="licznik">0</span> osób na stronie.</p>
+
+    <script>
+        // Skrypt JavaScript do obsługi licznika odwiedzających
+        let licznikOdwiedzajacych = 0;
+
+        // Sprawdź, czy w przeglądarce jest dostępny localStorage, aby zachować stan licznika
+        if (typeof(Storage) !== "undefined") {
+            // Jeśli tak, odczytaj liczbę z local storage
+            licznikOdwiedzajacych = localStorage.getItem("licznikOdwiedzajacych") || 0;
+            // Zwiększ licznik o 1
+            licznikOdwiedzajacych++;
+            // Zapisz licznik w local storage
+            localStorage.setItem("licznikOdwiedzajacych", licznikOdwiedzajacych);
+        } else {
+            // Jeśli local storage nie jest dostępny, zwiększ licznik o 1 za każdym razem, gdy strona jest odświeżana
+            licznikOdwiedzajacych++;
+        }
+
+        // Aktualizuj tekst w elemencie o id "licznik" na stronie
+        document.getElementById("licznik").textContent = licznikOdwiedzajacych;
+    </script>
+</body>
+</html>
